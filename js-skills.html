@@ -355,7 +355,14 @@
 
 <script>
   "use strict";
-  // put your code here
+
+  function stateAgreement(evt) {
+    evt.preventDefault();
+    var favoriteFood = $('#agreeable-form').find('input[name="favorite-food"]').val();
+    $('#agreeable-text').html("I like " + favoriteFood + " too!");
+  }
+
+  $('#agreeable-form').on('submit', stateAgreement);
 </script>
 
 <div class="hint">
@@ -385,7 +392,26 @@
 
 <script>
   "use strict";
-  // put your code here
+  // start game by clicking play button
+
+  function basicGame() {
+    var playAgain = true;
+    while (playAgain===true) {
+      var randomNumber = Math.floor(Math.random() * 100);
+      var userGuess = parseInt(prompt("Guess a number between 1 and 100"),10);
+      while (userGuess !== randomNumber) {
+        if (userGuess < randomNumber) {
+          userGuess = parseInt(prompt("Too low. Guess again."),10);
+        } else {
+          userGuess = parseInt(prompt("Too high. Guess again."),10);
+        }
+      } 
+      playAgain = confirm("Congratulations! Would you like to play again?");
+    }
+    alert("Goodbye!");
+  }
+
+  $('#play-guessing-game').on('click', basicGame);
 </script>
 
 <div class="hint">
@@ -426,7 +452,30 @@
 
 <script>
   "use strict";
-  // put your code here
+  // function advancedGame(evt) {
+  //   $('#number-guessed').prop('disabled', false);
+  //   $('#try-this-number').prop('disabled', false);
+  //   var randomNumber = Math.floor(Math.random() * 100);
+  //   console.log(randomNumber)
+  //   var guess = $('#guessing-game-2-form').submit(function(evt) {
+  //     evt.preventDefault();
+  //     var userGuess = parseInt($('#guessing-game-2-form').find('input[name="number-guessed"]').val(),10);
+  //     return userGuess
+  //   });
+
+  //  while (guess !== randomNumber) {
+   //  if (userGuess < randomNumber) {
+   //    $('#number-guessing-msg').html("Too low. Guess again.");
+   //    userGuess = parseInt($('#guessing-game-2-form').find('input[name="number-guessed"]').val(), 10);
+    //   } else {
+    //    $('#number-guessing-msg').html("Too low. Guess again.");
+    //     userGuess = parseInt($('#guessing-game-2-form').find('input[name="number-guessed"]'), 10);
+    //   }
+  //   } 
+    
+  // }
+
+  // $('#play-guessing-game-2').on('click', advancedGame);
 </script>
 
 
